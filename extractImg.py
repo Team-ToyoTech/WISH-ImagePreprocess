@@ -31,8 +31,10 @@ def CopyRandomImages(srcFolder, dstFolder, percent=10):
 for i in range(0, 10):
     srcFolder = f'D:\\Machine Learning\\mnist_png\\training\\{i}'
     dstFolder = f'D:\\Machine Learning\\mnist_wish\\{i}'
+    print(i)
     CopyRandomImages(srcFolder, dstFolder)
 
 srcFolder = r'D:\Machine Learning\mnist_png\training\NaN'
 dstFolder = r'D:\Machine Learning\mnist_wish\NaN'
+print("NaN")
 CopyRandomImages(srcFolder, dstFolder)
