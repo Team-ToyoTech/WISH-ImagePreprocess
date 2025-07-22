@@ -4,8 +4,8 @@
 
 <br>
 
-| total data | 12751988 images |
+| total data | 12,751,988 images |
 | :-: | :-: |
-| used data | images |
+| used data | 1,803,373 images |
 
 only 13% (approximately 1.5M) of the total data was used because of the lack of time for training.
