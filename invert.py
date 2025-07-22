@@ -21,7 +21,7 @@ def InvertImageColor(inputFilePath, outputFilePath):
 def InvertAllImagesInFolder(inputFolderPath, outputFolderPath):
     inputFolder = Path(inputFolderPath)
     outputFolder = Path(outputFolderPath)
-    outputFolder.mkdir(parents=True, exist_ok=True)  # 출력 폴더가 없으면 생성
+    outputFolder.mkdir(parents=True, exist_ok=True)
 
     imageExtensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.gif']
 
@@ -33,7 +33,6 @@ def InvertAllImagesInFolder(inputFolderPath, outputFolderPath):
             outputFile = outputFolder / file.name
             InvertImageColor(str(file), str(outputFile))
 
-# 사용 예시
 inputFolder = r'D:\Machine Learning\mnist_png\training\9'     # 입력 폴더 경로 (문자열)
 outputFolder = r'D:\Machine Learning\mnist_png\training\9_invert'   # 출력 폴더 경로 (문자열)
 InvertAllImagesInFolder(inputFolder, outputFolder)

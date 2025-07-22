@@ -3,7 +3,7 @@ import shutil
 import random
 from tqdm import tqdm
 
-def CopyRandomImages(srcFolder, dstFolder, percent=13):
+def CopyRandomImages(srcFolder, dstFolder, percent=10):
     imgExts = ['.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff']
 
     files = [f for f in os.listdir(srcFolder)
