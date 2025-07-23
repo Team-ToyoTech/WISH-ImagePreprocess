@@ -33,6 +33,6 @@ def InvertAllImagesInFolder(inputFolderPath, outputFolderPath):
             outputFile = outputFolder / file.name
             InvertImageColor(str(file), str(outputFile))
 
-inputFolder = r'D:\Machine Learning\mnist_png\training\9'     # 입력 폴더 경로 (문자열)
-outputFolder = r'D:\Machine Learning\mnist_png\training\9_invert'   # 출력 폴더 경로 (문자열)
+inputFolder = r'D:\Machine Learning\mnist_png\training\9'
+outputFolder = r'D:\Machine Learning\mnist_png\training\9_invert'
 InvertAllImagesInFolder(inputFolder, outputFolder)
