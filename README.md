@@ -1,6 +1,6 @@
 # Image Preprocessing
 
-> preprocesses images using Python for training AI used in **[WISH Kiosk](https://github.com/Team-ToyoTech/W.I.S.H.-Kiosk)**
+> preprocesses images using Python for training AI used in **[WI:SH Kiosk](https://github.com/Team-ToyoTech/W.I.S.H.-Kiosk)**
 
 <br>
 
