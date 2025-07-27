@@ -49,16 +49,16 @@ def DrawShortEdgeLines(image, lineCount, lineLengthRange=(5, 40), edgeMarginRati
         y2 = max(0, min(height - 1, y2))
         draw.line((x, y, x2, y2), fill=color, width=2)
 
-def GenerateMultiImages(baseImagePath, outputFolder, repeatCount=400000):
+def GenerateMultiImages(baseImagePath, outputFolder, repeatCount=175000):
     os.makedirs(outputFolder, exist_ok=True)
     baseImage = Image.open(baseImagePath).convert("RGBA")
     for i in tqdm(range(1, repeatCount + 1)):
         for lineCount in [1, 2, 3]:
             newImg = baseImage.copy()
-            DrawShortEdgeLines(newImg, lineCount, lineLengthRange=(5, 45), edgeMarginRatio=0.1)
+            DrawShortEdgeLines(newImg, lineCount, lineLengthRange=(5, 30), edgeMarginRatio=0.1)
             filename = f"edge_lines_{lineCount}_{i:06}.png"
             newImg.save(os.path.join(outputFolder, filename))
 
-baseImagePath = r'D:\Machine Learning\mnist_png\training\NaN\0.png'
-outputFolder = r'D:\Machine Learning\mnist_png\training\NaN'
+baseImagePath = r'D:\Machine Learning\mnist_origin\training\NaN\NaN.png'
+outputFolder = r'D:\Machine Learning\mnist_wish\NaN'
 GenerateMultiImages(baseImagePath, outputFolder)
