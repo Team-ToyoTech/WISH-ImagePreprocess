@@ -4,8 +4,8 @@
 
 <br>
 
-| total data | 12,751,988 images |
+| total data | images |
 | :--------: | :---------------: |
-| used data  | [1,387,208 images](https://drive.google.com/file/d/1L9opaEPhYD0AOANqlbxUC546euTgxaAk/view?usp=sharing) |
+| used data  | images |
 
 only 10% (approximately 1.5M) of the total data was used because of the lack of time and resources.
