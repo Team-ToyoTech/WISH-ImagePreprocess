@@ -1,5 +1,6 @@
 from pathlib import Path
 from PIL import Image, ImageOps
+from tqdm import tqdm
 
 def InvertImageColor(inputFilePath, outputFilePath):
     image = Image.open(inputFilePath)
@@ -25,7 +26,7 @@ def InvertAllImagesInFolder(inputFolderPath, outputFolderPath):
 
     imageExtensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.gif']
 
-    for file in inputFolder.iterdir():
+    for file in tqdm(inputFolder.iterdir(), desc="image invert", ncols=70):
         if (
             file.is_file() and
             file.suffix.lower() in imageExtensions
@@ -33,6 +34,11 @@ def InvertAllImagesInFolder(inputFolderPath, outputFolderPath):
             outputFile = outputFolder / file.name
             InvertImageColor(str(file), str(outputFile))
 
-inputFolder = r'D:\Machine Learning\mnist_png\training\9'
-outputFolder = r'D:\Machine Learning\mnist_png\training\9_invert'
+for i in range(10):
+    inputFolder = f"D:\\Machine Learning\\mnist_origin\\training\\{i}"
+    outputFolder = f"D:\\Machine Learning\\mnist_invert\\{i}"
+    InvertAllImagesInFolder(inputFolder, outputFolder)
+
+inputFolder = "D:\\Machine Learning\\mnist_origin\\training\\NaN"
+outputFolder = "D:\\Machine Learning\\mnist_invert\\NaN"
 InvertAllImagesInFolder(inputFolder, outputFolder)

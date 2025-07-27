@@ -2,6 +2,7 @@ from pathlib import Path
 from PIL import Image
 import random
 import numpy as np
+from tqdm import tqdm
 
 def MakeWhiteTransparent(image):
     image = image.convert("RGBA")
@@ -11,10 +12,9 @@ def MakeWhiteTransparent(image):
     return Image.fromarray(arr)
 
 def ComposeOverlayImages(
-    baseImagePath, overlayFolderPath, outputFolderPath, numRandom=9
+    baseImagePath, overlayFolderPath, outputFolderPath, numRandom=24
 ):
-    scaleFactors = [1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
-    rotations = [0, -15, 15]
+    scaleFactors = [2.0, 2.5, 3.0]
     overlayFolder = Path(overlayFolderPath)
     outputFolder = Path(outputFolderPath)
     outputFolder.mkdir(parents=True, exist_ok=True)
@@ -29,8 +29,8 @@ def ComposeOverlayImages(
 
     cnt = 0
 
-    for idx, overlayFile in enumerate(overlayFiles, 1):
-        print(f"{idx}/{totalFiles}")
+    for idx, overlayFile in tqdm(enumerate(overlayFiles, 1)):
+        # print(f"{idx}/{totalFiles}")
 
         overlayImageOrigin = Image.open(overlayFile)
         overlayImageOrigin = MakeWhiteTransparent(overlayImageOrigin)
@@ -42,40 +42,35 @@ def ComposeOverlayImages(
                 continue
             overlayImageScaled = overlayImageOrigin.resize((overlayWidth, overlayHeight), Image.LANCZOS)
 
-            for angle in rotations:
-                overlayImageRotated = overlayImageScaled.rotate(angle, expand=True)
-                rotatedWidth, rotatedHeight = overlayImageRotated.size
-                if rotatedWidth > baseWidth or rotatedHeight > baseHeight:
-                    continue
+            positions = []
+            centerX = baseWidth // 2
+            centerY = baseHeight // 2
+            positions.append( (centerX, centerY) )
 
-                positions = []
-                centerX = (baseWidth - rotatedWidth) // 2
-                centerY = (baseHeight - rotatedHeight) // 2
-                positions.append( (centerX, centerY) )
+            used = set()
+            used.add( (centerX, centerY) )
+            while len(positions) < numRandom + 1:
+                randX = random.randint(0, baseWidth - overlayWidth)
+                randY = random.randint(0, baseHeight - overlayHeight)
+                if (randX, randY) not in used:
+                    positions.append( (randX, randY) )
+                    used.add( (randX, randY) )
 
-                used = set()
-                used.add( (centerX, centerY) )
-                while len(positions) < numRandom + 1:
-                    randX = random.randint(0, baseWidth - rotatedWidth)
-                    randY = random.randint(0, baseHeight - rotatedHeight)
-                    if (randX, randY) not in used:
-                        positions.append( (randX, randY) )
-                        used.add( (randX, randY) )
-
-                for posX, posY in positions:
-                    resultImage = baseImage.copy()
-                    resultImage.alpha_composite(overlayImageRotated, (posX, posY))
-                    resultFileName = (
-                        f"{overlayName}_scale{scale:.2f}_rot{angle}_at{posX}_{posY}.png"
-                    )
-                    cnt += 1
-                    resultFilePath = outputFolder / resultFileName
-                    resultImage.save(resultFilePath)
+            for posX, posY in positions:
+                resultImage = baseImage.copy()
+                resultImage.alpha_composite(overlayImageScaled, (posX, posY))
+                resultFileName = (
+                    f"{overlayName}_scale{scale:.2f}_at{posX}_{posY}.png"
+                )
+                cnt += 1
+                resultFilePath = outputFolder / resultFileName
+                resultImage.save(resultFilePath)
 
     print(cnt)
 
 
-baseImagePath = r'D:\Machine Learning\mnist_png\training\NaN\0.png'
-overlayFolderPath = r'D:\Machine Learning\mnist_png\training\9_invert'
-outputFolderPath = r'D:\Machine Learning\mnist_png\training\9_new'
-ComposeOverlayImages(baseImagePath, overlayFolderPath, outputFolderPath)
+baseImagePath = r'D:\Machine Learning\mnist_origin\training\NaN\NaN.png'
+for i in range(10):
+    overlayFolderPath = f"D:\\Machine Learning\\mnist_invert\\{i}"
+    outputFolderPath = f"D:\\Machine Learning\\mnist_wish\\{i}"
+    ComposeOverlayImages(baseImagePath, overlayFolderPath, outputFolderPath)
