@@ -32,12 +32,12 @@ def rotate_images(filePath, outputPath):
             print(f"Error processing {filename}: {e}")
 
 for i in range(10):
-    print(i, end = ' ')
-    filePath = f"D:\\Machine Learning\\1-1to2-4\\{i}"
+    print(i)
+    filePath = f"D:\\Machine Learning\\1-0to6-2\\{i}"
     outputPath = f"D:\\Machine Learning\\tmnist_data\\{i}"
     rotate_images(filePath, outputPath)
 
-print("NaN", end = ' ')
-filePath = "D:\\Machine Learning\\1-1to2-4\\NaN"
+print("NaN")
+filePath = "D:\\Machine Learning\\1-0to6-2\\NaN"
 outputPath = "D:\\Machine Learning\\tmnist_data\\NaN"
 rotate_images(filePath, outputPath)
