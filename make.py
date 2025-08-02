@@ -72,5 +72,5 @@ def ComposeOverlayImages(
 baseImagePath = r'D:\Machine Learning\mnist_origin\training\NaN\NaN.png'
 for i in range(10):
     overlayFolderPath = f"D:\\Machine Learning\\mnist_invert\\{i}"
-    outputFolderPath = f"D:\\Machine Learning\\mnist_wish\\{i}"
-    ComposeOverlayImages(baseImagePath, overlayFolderPath, outputFolderPath)
+    outputFolderPath = f"D:\\Machine Learning\\mnist_2m\\{i}"
+    ComposeOverlayImages(baseImagePath, overlayFolderPath, outputFolderPath, 8)

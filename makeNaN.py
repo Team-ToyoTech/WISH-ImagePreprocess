@@ -60,5 +60,5 @@ def GenerateMultiImages(baseImagePath, outputFolder, repeatCount=175000):
             newImg.save(os.path.join(outputFolder, filename))
 
 baseImagePath = r'D:\Machine Learning\mnist_origin\training\NaN\NaN.png'
-outputFolder = r'D:\Machine Learning\mnist_wish\NaN'
-GenerateMultiImages(baseImagePath, outputFolder)
+outputFolder = r'D:\Machine Learning\mnist_2m\NaN'
+GenerateMultiImages(baseImagePath, outputFolder, 189000)
