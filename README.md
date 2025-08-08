@@ -1,8 +1,9 @@
 # WISH-ImagePreprocess
 
-> **WI:SH Kiosk**(종이에 쓴 숫자를 스캔해 주문으로 변환하는 키오스크)의 **숫자 손글씨 데이터셋**을 학습/검증에 적합하도록 가공하는 전처리 스크립트 모음입니다.  
-> handmade data(수집본) 기반 전처리를 수행하며, 사용 데이터 기록으로 **23,300 images** 링크가 포함되어 있습니다.  
-> - Kiosk 본 프로젝트: [**WI:SH Kiosk**](https://github.com/Team-ToyoTech/WISH-Kiosk)
+> [**WI:SH Kiosk**](https://github.com/Team-ToyoTech/WISH-Kiosk)의 **숫자 손글씨 데이터셋**을 학습/검증에 적합하도록 가공하는 전처리 스크립트 모음입니다.
+> 
+> handmade data(직접 작성하여 스캔한 데이터) 기반 전처리를 수행합니다.
+> - WI:SH Kiosk 프로젝트: [**WI:SH Kiosk**](https://github.com/Team-ToyoTech/WISH-Kiosk)
 > - Used data: [Uploaded in Google Drive](https://drive.google.com/file/d/13Z6RSueJsrHQMfNjg8VyDbt-_C5sD_2x/view?usp=sharing)
 
 ---
