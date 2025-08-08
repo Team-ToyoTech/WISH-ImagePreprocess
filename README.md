@@ -12,7 +12,7 @@
 | 파일 | 목적/기능 | 비고 |
 |---|---|---|
 | `handWritingPreprocess.py` | **미세 회전 증강**: 각 이미지에 대해 `±0.5°`부터 `±5.0°`까지 0.5° 간격으로 회전본 생성(총 20개 각도) | PIL 사용, `D:\Machine Learning\1-0to6-2\<digit>` → `D:\Machine Learning\tmnist_data\<digit>` 등 경로 기반 예시 포함. |
-| `invert.py` | **색 반전**(RGB/RGBA 보존): 흰색 배경/검은 획으로 정규화 | RGBA 알파 보존 처리 포함. `mnist_origin` → `mnist_invert` 변환 예시. :contentReference[oaicite:2]{index=2} |
+| `invert.py` | **색 반전**(RGB/RGBA 보존): 흰색 배경/검은 획으로 정규화 | RGBA 알파 보존 처리 포함. `mnist_origin` → `mnist_invert` 변환 예시. |
 | `make.py` | **합성 데이터 생성**: 투명 처리된 숫자 이미지를 **기본 배경(NaN.png)** 위에 스케일 `[2.0, 2.5, 3.0]`로 리사이즈 후 **중앙+랜덤 위치**에 합성 | 기본 `numRandom=24`, 샘플 호출은 `8` 사용(중앙 포함 총 9 위치/스케일마다). 출력 파일명에 스케일/좌표 포함. |
 | `makeNaN.py` | **NaN(배경/잡음) 합성**: 이미지 테두리에서 랜덤 짧은 선을 1~3개 그려 다양한 노이즈 샘플 생성 | `repeatCount=189000//3` 루프 × (lineCount=1,2,3) ⇒ 총 약 189k 샘플 생성. |
 | `SelectImg.py` | **무작위 샘플 추출**: 폴더 내 이미지 일부(%)를 무작위 복사 | `percent=10` 예시, 확장자 필터 및 진행 로그. |
